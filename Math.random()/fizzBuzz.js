@@ -1,19 +1,14 @@
-/*
-  I slightly changed how this code work from this source:
-    https://www.youtube.com/watch?v=duOIpyQ7c84&t=978s
-*/
-
-function fizzBuzz(input){
+function FizzBuzz(input){
     if(input%3!=0 && input%5!=0){
         return input;
     }
     if(input%3==0 && input%5==0){
-        return 'fizzBuzz';
+        return 'FizzBuzz';
     }
     if(input%3==0){
-        return 'fizz';
+        return 'Fizz';
     }
     return 'Buzz';
 }
-let result = fizzBuzz(Math.floor(Math.random()*100));
+let result = FizzBuzz(Math.floor(Math.random()*100));
 console.log(result);
