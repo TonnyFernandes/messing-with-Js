@@ -41,6 +41,22 @@ function validateLength(length){
     return true;
 }
 
+function passwordGenerator(passwordLength){
+
+    do{
+        console.log('Generating password...');
+        password = ''; 
+        let i=0; 
+        do{
+            const c = selectChar(Math.floor(Math.random()*4));
+            password += c;
+            i++;
+        }while(i<passwordLength);
+        console.log('Validating password...');
+    }while(!validatePassword(password));
+    
+    return password;
+}
 function selectChar(x){
     switch(x){
         case 0:
@@ -53,27 +69,7 @@ function selectChar(x){
             return symbols[Math.floor(Math.random() * symbols.length)];
     }
 }
-function passwordGenerator(passwordLength){
-
-    do{
-       let i=0; 
-        do{
-            let c = selectChar(Math.floor(Math.random()*4));
-            password.push(c);
-            i++;
-        }while(i<passwordLength);
-        
-    }while(!validatePassword(password));
-    
-    return password;
-}
 function validatePassword(password){
-    
-    // Check password length
-    if(password.length < 8 || password.length > 16){
-        return false;
-    }
-
     // Step zero to check if password have at least one of Lowercase, one Uppercase, one Number and one Symbol
     let hasLower = false;
     let hasUpper = false;
@@ -91,12 +87,7 @@ function validatePassword(password){
     }
     
     // Second and last step at checking password
-    if(!hasLower || !hasUpper || !hasNumbers || !hasSymbols){
-        return false;
-    }
-    
-    // Password is valid
-    return true;
+    return hasLower && hasUpper && hasNumbers && hasSymbols;
 }
 
 
@@ -105,8 +96,4 @@ instructions();
 const passwordLength = askLength();
 let password = []; 
 password = passwordGenerator(passwordLength);
-let p = '';
-for(character of password){
-    p+=character;
-}
-console.log(`Your password: ${p}`);
+console.log(`Your password: ${password}`);
