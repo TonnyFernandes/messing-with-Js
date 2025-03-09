@@ -5,10 +5,12 @@ const symbols = new Set(`!@#$%&*+=-_.,;:?/|\\{}[]()<>`);
 
 function validateLength(length){
     if(isNaN(length)){
+        console.log('Length is Not a Number\n')
         return false;
     }
     
     if(length < 8 || length > 16){
+        console.log('Length must be between 8 and 16\n');
         return false;
     }
     
